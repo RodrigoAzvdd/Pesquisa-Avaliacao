@@ -498,6 +498,9 @@
                 avaliacoes: capturarAvaliacoes()
             };
 
+            // Reset form
+            document.getElementById('satisfactionForm').reset();
+
             try {
                 const response = await fetch('https://prod-22.brazilsouth.logic.azure.com:443/workflows/260ed2895c224efab15a184f85616d69/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tjoLurpGfEOk3Dh--2SweSnCBI8WilZ_CbpXtz9gZ10', {
                     method: 'POST',
@@ -510,8 +513,7 @@
                 if (response.ok) {
                     document.getElementById('sendInfo').innerHTML = 'Avaliação Enviada!'
 
-                    // Reset form
-                    document.getElementById('satisfactionForm').reset();
+
                     document.getElementById('nomeInput').value = usuario;
                     document.getElementById('empresaInput').value = empresa;
                     document.querySelector('input[name="setor"]').checked = true;
@@ -571,7 +573,6 @@
                 li.innerHTML = `
             <div class="d-flex flex-column">
                 <strong>${user.Nome}</strong>
-                <small>${user.Email}</small>
                 <small class="text-muted">${user.Empresa}</small>
             </div>
         `;
