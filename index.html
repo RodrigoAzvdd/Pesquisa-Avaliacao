@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação Setor Corporativo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .input-group-text {
+            transition: all .3s;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #eeeeee;
+            }
+        }
+
+        .modal-dialog {
+            display: flex;
+            align-items: center;
+            min-height: calc(100% - 1rem);
+        }
+
+        .modal-dialog {
+            display: flex;
+            align-items: center;
+            min-height: calc(100% - 1rem);
+            margin: 1rem auto;
+            max-width: 500px;
+        }
+
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: antiquewhite;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: .8rem;
+            padding: 2rem 3rem;
+        }
+
+        .section-title {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .radios-inline label {
+            margin-right: 15px;
+        }
+
+        .radios-vertical label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .sectionDiv {
+            margin: 2rem 0;
+        }
+
+        .question-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nomeSetor {
+            font-weight: 600;
+        }
+
+        .btn-div {
+            margin-top: 5rem;
+            display: flex;
+            justify-content: end;
+        }
+
+        #submitBtn {
+            padding: .5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+            transition: all .5s;
+        }
+
+        #submitBtn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 .1rem #7f7f7f;
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 3.5rem;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+        }
+
+        .info {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .logo-div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            padding: 4rem 0;
+
+        }
+
+        .logo {
+            width: 25rem;
+        }
+
+        .input-div {
+            display: flex;
+            flex-direction: column;
+            width: 20rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-div label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .input-div input {
+            padding: .2rem 1rem;
+            font-size: 1.2rem;
+        }
+
+        .informacao-usuario {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-4">
+
+        <div class="logo-div">
+            <img class="logo" src="./Grupo Telles.png" alt="logo">
+        </div>
+
+        <div>
+            <h1 class="title text-center mb-4">PESQUISA DE SATISFAÇÃO</h1>
+            <h1 class="subtitle text-center mb-4">SERVIÇOS CORPORATIVOS</h1>
+
+        </div>
+        <p class="info">Prezado(a),
+            Convidamos você a participar de uma Pesquisa de Satisfação sobre os Serviços Corporativos prestados às
+            unidades de negócios do Grupo Telles. Acreditamos que a melhoria contínua de nossas operações depende do
+            feedback de nossos clientes internos. Por isso, sua participação é fundamental para identificar os pontos
+            fortes de nossa atuação e áreas que precisam de aprimoramento, assegurando que nossas soluções atendam de
+            forma cada vez mais eficiente às necessidades das unidades de negócios. A pesquisa é anônima, e todas as
+            respostas serão tratadas com total confidencialidade.
+            Agradecemos desde já sua participação!</p>
+
+        <form id="satisfactionForm">
+            <div class="informacao-usuario">
+                <div class="input-div form-group">
+                    <label for="nomeInput">Nome:</label>
+                    <div class="input-group">
+                        <input class="input form-control" id="nomeInput" type="text" placeholder="Exemplo: Rodrigo">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i> <!-- Ícone de lupa do Bootstrap Icons -->
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-div form-group">
+                    <label for="">Empresa:</label>
+                    <input class="input form-control" id="empresaInput" type="text" placeholder="" readonly>
+                </div>
+
+                <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="searchModalLabel">Selecione um Nome</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul id="resultList" class="list-group">
+                                    Carregando...
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="searchModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="submitModalTitle">Selecione um Nome</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul id="sendInfo" class="list-group">
+                                    Enviando Avaliação...
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Setores -->
+            <div id="setores" class="question-group">
+                <h2 class="section-title">Qual setor corporativo você está avaliando?</h2>
+                <div class="radios-vertical">
+                    <label><input type="radio" onclick="mudarNomeSetor('Recursos Humanos')" name="setor"
+                            value="Recursos Humanos" checked> Recursos Humanos</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('TI')" name="setor" value="TI"> TI (Tecnologia da
+                        Informação)</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Processos')" name="setor" value="Processos">
+                        Processos</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Marketing')" name="setor" value="Marketing">
+                        Marketing</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Jurídico')" name="setor" value="Jurídico">
+                        Jurídico</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Compras')" name="setor" value="Compras">
+                        Compras</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Contabilidade')" name="setor"
+                            value="Contabilidade">
+                        Contabilidade</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Controladoria')" name="setor"
+                            value="Controladoria">
+                        Controladoria</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Financeiro')" name="setor" value="Financeiro">
+                        Financeiro</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Engenharia')" name="setor" value="Engenharia">
+                        Engenharia</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Segurança Patrimonial')" name="setor"
+                            value="Segurança Patrimonial"> Segurança Patrimonial</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Jurídico')" name="setor" value="Jurídico">
+                        Jurídico</label>
+                    <label><input type="radio" onclick="mudarNomeSetor('Oficina')" name="setor" value="Oficina">
+                        Oficina</label>
+                </div>
+            </div>
+
+            <!-- Sobre o setor -->
+            <div class="question-group">
+                <h2 class="section-title">Sobre o setor de <span class="nomeSetor">RH</span>:</h2>
+                <p>Escala de 1 a 5, sendo 1 = péssimo e 5 = excelente</p>
+
+                <!-- Satisfação Geral -->
+                <div class="sectionDiv">
+                    <h3>Satisfação Geral:</h3>
+                    <div class="mb-3">
+                        <p>1. Como você avalia a <b>qualidade do atendimento</b> do setor de <span
+                                class="nomeSetor">RH</span>?
+                        </p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="qualidade" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="qualidade" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="qualidade" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="qualidade" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="qualidade" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <p>2. Como você avalia a <b>disponibilidade</b> do setor de <span class="nomeSetor">RH</span>?
+                        </p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="disponibilidade" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="disponibilidade" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="disponibilidade" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="disponibilidade" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="disponibilidade" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <p>3. Como você avalia a <b>cordialidade e respeito</b> do setor de <span
+                                class="nomeSetor">RH</span>?
+                        </p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="cordialidade" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="cordialidade" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="cordialidade" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="cordialidade" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="cordialidade" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="sectionDiv">
+                    <h3>Agilidade na Entrega de Demandas:</h3>
+                    <div class="mb-3">
+                        <p>1. O setor de <span class="nomeSetor">RH</span> responde rapidamente às suas solicitações?
+                        </p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="agilidade" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="agilidade" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="agilidade" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="agilidade" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="agilidade" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <p>2. Os <strong>prazos</strong> estipulados pelo setor de <span class="nomeSetor">RH</span> são
+                            cumpridos de maneira eficaz?</p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="prazos" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="prazos" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="prazos" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="prazos" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="prazos" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <p>3. O setor de <span class="nomeSetor">RH</span> tem capacidade para <strong>priorizar
+                                demandas
+                                urgentes</strong>
+                            quando necessário?
+                        </p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="priorizarDemandas" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="priorizarDemandas" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="priorizarDemandas" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="priorizarDemandas" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="priorizarDemandas" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="sectionDiv">
+                    <h3>Comunicação e Relacionamento:</h3>
+                    <div class="mb-3">
+                        <p>1. O setor de <span class="nomeSetor">RH</span> mantém uma <strong>comunicação clara</strong>
+                            durante
+                            o processo de entrega das demandas?
+                        </p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="comunicacaoClara" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="comunicacaoClara" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="comunicacaoClara" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="comunicacaoClara" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="comunicacaoClara" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <p>2. Você recebe <strong>atualizações regulares</strong> sobre o status das demandas
+                            solicitadas ao
+                            setor de <span class="nomeSetor">RH</span>?</p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="atualizacoesRegulares" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="atualizacoesRegulares" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="atualizacoesRegulares" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="atualizacoesRegulares" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="atualizacoesRegulares" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <p>3. Como você avalia a proatividade do setor de <span class="nomeSetor">RH</span> ao comunicar
+                            <strong>mudanças ou imprevistos</strong> nas demandas solicitadas?
+                        </p>
+                        <div class="radios-inline">
+                            <label><input type="radio" name="mudancasImprevistos" value="1"> 1 - Péssimo</label>
+                            <label><input type="radio" name="mudancasImprevistos" value="2"> 2 - Ruim</label>
+                            <label><input type="radio" name="mudancasImprevistos" value="3"> 3 - Regular</label>
+                            <label><input type="radio" name="mudancasImprevistos" value="4"> 4 - Bom</label>
+                            <label><input type="radio" name="mudancasImprevistos" value="5"> 5 - Excelente</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENPS -->
+            <div class="question-group">
+                <h2 class="section-title">ENPS</h2>
+                <p>Em uma escala de 0 a 10, o quanto você recomendaria os serviços do setor <span
+                        class="nomeSetor">RH</span>?
+                </p>
+                <div class="radios-inline">
+                    <label><input type="radio" name="enps" value="0"> 0</label>
+                    <label><input type="radio" name="enps" value="1"> 1</label>
+                    <label><input type="radio" name="enps" value="2"> 2</label>
+                    <label><input type="radio" name="enps" value="3"> 3</label>
+                    <label><input type="radio" name="enps" value="4"> 4</label>
+                    <label><input type="radio" name="enps" value="5"> 5</label>
+                    <label><input type="radio" name="enps" value="6"> 6</label>
+                    <label><input type="radio" name="enps" value="7"> 7</label>
+                    <label><input type="radio" name="enps" value="8"> 8</label>
+                    <label><input type="radio" name="enps" value="9"> 9</label>
+                    <label><input type="radio" name="enps" value="10"> 10</label>
+                </div>
+            </div>
+        </form>
+
+        <div class="btn-div">
+            <button id="submitBtn" class="btn btn-success">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        function mudarNomeSetor(nome) {
+            console.log('entrou')
+            console.log(nome)
+            document.querySelectorAll('.nomeSetor').forEach(element => {
+                console.log(element)
+                element.innerHTML = nome
+            })
+        }
+
+        // Capturar dados do formulário
+        document.getElementById('submitBtn').addEventListener('click', async function (event) {
+            event.preventDefault();
+
+            // Validate user info
+            if (!document.getElementById('nomeInput').value) {
+                alert('Por favor, selecione um usuário');
+                return;
+            }
+
+            const avaliacoesNomes = [
+                'qualidade', 'disponibilidade', 'cordialidade',
+                'agilidade', 'prazos', 'priorizarDemandas',
+                'comunicacaoClara', 'atualizacoesRegulares', 'mudancasImprevistos',
+                'enps'
+            ];
+
+            // Check each field
+            for (const field of avaliacoesNomes) {
+                if (!document.querySelector(`input[name="${field}"]:checked`)) {
+                    alert('Por favor, responda todas as perguntas');
+                    return;
+                }
+            }
+
+            // Capture form data
+            const usuario = document.getElementById('nomeInput').value;
+            const empresa = document.getElementById('empresaInput').value;
+            const setor = document.querySelector('input[name="setor"]:checked').value;
+
+            function capturarAvaliacoes() {
+                const avaliacoes = [];
+                avaliacoesNomes.forEach(nome => {
+                    const valorSelecionado = document.querySelector(`input[name="${nome}"]:checked`);
+                    if (valorSelecionado) {
+                        let categoria = '';
+                        if (nome == 'qualidade' || nome == 'disponibilidade' || nome == 'cordialidade' || nome == 'enps') categoria = 'Satisfação Geral';
+                        else if (nome == 'agilidade' || nome == 'prazos' || nome == 'priorizarDemandas') categoria = 'Agilidade na Entrega de Demandas';
+                        else if (nome == 'comunicacaoClara' || nome == 'atualizacoesRegulares' || nome == 'mudancasImprevistos') categoria = 'Comunicação e Relacionamento';
+                        avaliacoes.push({
+                            descricao: nome,
+                            categoria: categoria,
+                            valor: valorSelecionado.value
+                        });
+                    }
+                });
+                return avaliacoes;
+            }
+
+            // Show modal
+            const modalSubmit = new bootstrap.Modal(document.getElementById('submitModal'));
+            modalSubmit.show();
+
+            const dadosFormulario = {
+                usuario: usuario,
+                empresa: empresa,
+                setor: setor,
+                avaliacoes: capturarAvaliacoes()
+            };
+
+            try {
+                const response = await fetch('https://prod-22.brazilsouth.logic.azure.com:443/workflows/260ed2895c224efab15a184f85616d69/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tjoLurpGfEOk3Dh--2SweSnCBI8WilZ_CbpXtz9gZ10', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dadosFormulario)
+                });
+
+                if (response.ok) {
+                    document.getElementById('sendInfo').innerHTML = 'Avaliação Enviada!'
+
+                    // Reset form
+                    document.getElementById('satisfactionForm').reset();
+                    document.getElementById('nomeInput').value = usuario;
+                    document.getElementById('empresaInput').value = empresa;
+                    document.querySelector('input[name="setor"]').checked = true;
+                    document.querySelectorAll('.nomeSetor').forEach(element => {
+                        element.innerHTML = 'RH'
+                    });
+                } else {
+                    document.getElementById('sendInfo').innerHTML = 'Erro ao enviar avaliação. Tente novamente.'
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('sendInfo').innerHTML = 'Erro ao enviar avaliação. Tente novamente.'
+            }
+        });
+
+
+        document.querySelector('.input-group-text').addEventListener('click', function () {
+            const searchInput = document.getElementById('nomeInput').value;
+            if (searchInput) {
+                searchUsers(searchInput);
+            }
+        });
+
+        // Function to search users
+        async function searchUsers(searchTerm) {
+
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('searchModal'));
+            modal.show();
+
+            try {
+                const response = await fetch('https://prod-18.brazilsouth.logic.azure.com:443/workflows/624e8b18e17d4040a45f6cafa9dac3c6/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=kdaod5TUbW-Gy5LdP79lZ5jnk1d4mhwv_lxVzn8Njq0', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        usuario: searchTerm
+                    })
+                });
+
+                const users = await response.json();
+                displayResults(users);
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        }
+
+        // Function to display results in modal
+        function displayResults(users) {
+            const resultList = document.getElementById('resultList');
+            resultList.innerHTML = '';
+
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item list-group-item-action';
+                li.innerHTML = `
+            <div class="d-flex flex-column">
+                <strong>${user.Nome}</strong>
+                <small>${user.Email}</small>
+                <small class="text-muted">${user.Empresa}</small>
+            </div>
+        `;
+
+                li.addEventListener('click', () => {
+                    document.getElementById('nomeInput').value = user.Nome;
+                    document.getElementById('empresaInput').value = user.Empresa;
+                    bootstrap.Modal.getInstance(document.getElementById('searchModal')).hide();
+                });
+
+                resultList.appendChild(li);
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
