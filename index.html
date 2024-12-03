@@ -165,25 +165,26 @@
             unidades de negócios do Grupo Telles. Acreditamos que a melhoria contínua de nossas operações depende do
             feedback de nossos clientes internos. Por isso, sua participação é fundamental para identificar os pontos
             fortes de nossa atuação e áreas que precisam de aprimoramento, assegurando que nossas soluções atendam de
-            forma cada vez mais eficiente às necessidades das unidades de negócios. A pesquisa é anônima, e todas as
+            forma cada vez mais eficiente às necessidades das unidades de negócios. A pesquisa é <strong>anônima</strong>, e todas as
             respostas serão tratadas com total confidencialidade.
             Agradecemos desde já sua participação!</p>
 
         <form id="satisfactionForm">
             <div class="informacao-usuario">
-                <div class="input-div form-group">
-                    <label for="nomeInput">Nome:</label>
-                    <div class="input-group">
-                        <input class="input form-control" id="nomeInput" type="text" placeholder="Exemplo: Rodrigo">
-                        <span class="input-group-text">
-                            <i class="bi bi-search"></i> <!-- Ícone de lupa do Bootstrap Icons -->
-                        </span>
-                    </div>
-                </div>
 
                 <div class="input-div form-group">
                     <label for="">Empresa:</label>
-                    <input class="input form-control" id="empresaInput" type="text" placeholder="" readonly>
+                    <select class="form-control" name="empresas" id="empresas">
+                        <option value="default" selected disabled>Selecione uma Empresa</option>
+                        <option value="Agropaulo">Agropaulo</option>
+                        <option value="Naturagua">Naturagua</option>
+                        <option value="Natucoco">Natucoco</option>
+                        <option value="Yplastic">Yplastic</option>
+                        <option value="Ypetro">Ypetro</option>
+                        <option value="iPark">iPark</option>
+                        <option value="Santelisa">Santelisa</option>
+                        <option value="Ceará-Mirim">Ceará-Mirim</option>
+                    </select>
                 </div>
 
                 <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
@@ -315,7 +316,7 @@
 
                 <div class="sectionDiv">
                     <h3>Agilidade na Entrega de Demandas:</h3>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <p>1. O setor de <span class="nomeSetor">RH</span> responde rapidamente às suas solicitações?
                         </p>
                         <div class="radios-inline">
@@ -325,10 +326,10 @@
                             <label><input type="radio" name="agilidade" value="4"> 4 - Bom</label>
                             <label><input type="radio" name="agilidade" value="5"> 5 - Excelente</label>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="mb-3">
-                        <p>2. Os <strong>prazos</strong> estipulados pelo setor de <span class="nomeSetor">RH</span> são
+                        <p>1. Os <strong>prazos</strong> estipulados pelo setor de <span class="nomeSetor">RH</span> são
                             cumpridos de maneira eficaz?</p>
                         <div class="radios-inline">
                             <label><input type="radio" name="prazos" value="1"> 1 - Péssimo</label>
@@ -340,7 +341,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <p>3. O setor de <span class="nomeSetor">RH</span> tem capacidade para <strong>priorizar
+                        <p>2. O setor de <span class="nomeSetor">RH</span> consegue <strong>priorizar
                                 demandas
                                 urgentes</strong>
                             quando necessário?
@@ -360,7 +361,7 @@
                 <div class="sectionDiv">
                     <h3>Comunicação e Relacionamento:</h3>
                     <div class="mb-3">
-                        <p>1. O setor de <span class="nomeSetor">RH</span> mantém uma <strong>comunicação clara</strong>
+                        <p>1. O setor de <span class="nomeSetor">RH</span> possui uma <strong>comunicação clara</strong>
                             durante
                             o processo de entrega das demandas?
                         </p>
@@ -373,7 +374,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <p>2. Você recebe <strong>atualizações regulares</strong> sobre o status das demandas
                             solicitadas ao
                             setor de <span class="nomeSetor">RH</span>?</p>
@@ -384,10 +385,10 @@
                             <label><input type="radio" name="atualizacoesRegulares" value="4"> 4 - Bom</label>
                             <label><input type="radio" name="atualizacoesRegulares" value="5"> 5 - Excelente</label>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="mb-3">
-                        <p>3. Como você avalia a proatividade do setor de <span class="nomeSetor">RH</span> ao comunicar
+                        <p>2. Como você avalia a proatividade do setor de <span class="nomeSetor">RH</span> ao comunicar
                             <strong>mudanças ou imprevistos</strong> nas demandas solicitadas?
                         </p>
                         <div class="radios-inline">
@@ -401,24 +402,24 @@
                 </div>
             </div>
 
-            <!-- ENPS -->
+            <!-- NPS -->
             <div class="question-group">
-                <h2 class="section-title">ENPS</h2>
-                <p>Em uma escala de 0 a 10, o quanto você recomendaria os serviços do setor <span
+                <h2 class="section-title">NPS</h2>
+                <p>Em uma escala de 0 a 10, o quanto você está satisfeito com os serviços do setor <span
                         class="nomeSetor">RH</span>?
                 </p>
                 <div class="radios-inline">
-                    <label><input type="radio" name="enps" value="0"> 0</label>
-                    <label><input type="radio" name="enps" value="1"> 1</label>
-                    <label><input type="radio" name="enps" value="2"> 2</label>
-                    <label><input type="radio" name="enps" value="3"> 3</label>
-                    <label><input type="radio" name="enps" value="4"> 4</label>
-                    <label><input type="radio" name="enps" value="5"> 5</label>
-                    <label><input type="radio" name="enps" value="6"> 6</label>
-                    <label><input type="radio" name="enps" value="7"> 7</label>
-                    <label><input type="radio" name="enps" value="8"> 8</label>
-                    <label><input type="radio" name="enps" value="9"> 9</label>
-                    <label><input type="radio" name="enps" value="10"> 10</label>
+                    <label><input type="radio" name="nps" value="0"> 0</label>
+                    <label><input type="radio" name="nps" value="1"> 1</label>
+                    <label><input type="radio" name="nps" value="2"> 2</label>
+                    <label><input type="radio" name="nps" value="3"> 3</label>
+                    <label><input type="radio" name="nps" value="4"> 4</label>
+                    <label><input type="radio" name="nps" value="5"> 5</label>
+                    <label><input type="radio" name="nps" value="6"> 6</label>
+                    <label><input type="radio" name="nps" value="7"> 7</label>
+                    <label><input type="radio" name="nps" value="8"> 8</label>
+                    <label><input type="radio" name="nps" value="9"> 9</label>
+                    <label><input type="radio" name="nps" value="10"> 10</label>
                 </div>
             </div>
         </form>
@@ -452,7 +453,7 @@
                 'qualidade', 'disponibilidade', 'cordialidade',
                 'agilidade', 'prazos', 'priorizarDemandas',
                 'comunicacaoClara', 'atualizacoesRegulares', 'mudancasImprevistos',
-                'enps'
+                'nps'
             ];
 
             // Check each field
@@ -465,7 +466,7 @@
 
             // Capture form data
             const usuario = document.getElementById('nomeInput').value;
-            const empresa = document.getElementById('empresaInput').value;
+            const empresa = document.getElementById('empresas').value;
             const setor = document.querySelector('input[name="setor"]:checked').value;
 
             function capturarAvaliacoes() {
@@ -474,7 +475,7 @@
                     const valorSelecionado = document.querySelector(`input[name="${nome}"]:checked`);
                     if (valorSelecionado) {
                         let categoria = '';
-                        if (nome == 'qualidade' || nome == 'disponibilidade' || nome == 'cordialidade' || nome == 'enps') categoria = 'Satisfação Geral';
+                        if (nome == 'qualidade' || nome == 'disponibilidade' || nome == 'cordialidade' || nome == 'nps') categoria = 'Satisfação Geral';
                         else if (nome == 'agilidade' || nome == 'prazos' || nome == 'priorizarDemandas') categoria = 'Agilidade na Entrega de Demandas';
                         else if (nome == 'comunicacaoClara' || nome == 'atualizacoesRegulares' || nome == 'mudancasImprevistos') categoria = 'Comunicação e Relacionamento';
                         avaliacoes.push({
@@ -492,7 +493,6 @@
             modalSubmit.show();
 
             const dadosFormulario = {
-                usuario: usuario,
                 empresa: empresa,
                 setor: setor,
                 avaliacoes: capturarAvaliacoes()
@@ -536,59 +536,6 @@
                 searchUsers(searchInput);
             }
         });
-
-        // Function to search users
-        async function searchUsers(searchTerm) {
-
-            // Show modal
-            const modal = new bootstrap.Modal(document.getElementById('searchModal'));
-            modal.show();
-
-            try {
-                const response = await fetch('https://prod-18.brazilsouth.logic.azure.com:443/workflows/624e8b18e17d4040a45f6cafa9dac3c6/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=kdaod5TUbW-Gy5LdP79lZ5jnk1d4mhwv_lxVzn8Njq0', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        usuario: searchTerm
-                    })
-                });
-
-                const users = await response.json();
-                displayResults(users);
-            } catch (error) {
-                console.error('Error fetching users:', error);
-            }
-        }
-
-        // Function to display results in modal
-        function displayResults(users) {
-            const resultList = document.getElementById('resultList');
-            resultList.innerHTML = '';
-
-            users.forEach(user => {
-                const li = document.createElement('li');
-                li.className = 'list-group-item list-group-item-action';
-                li.innerHTML = `
-            <div class="d-flex flex-column">
-                <strong>${user.Nome}</strong>
-                
-                <small class="text-muted">${user.Empresa == null ? 'Empresa não cadastrada' : user.Empresa}</small>
-            </div>
-        `;
-
-                // <small>${user.Email}</small>
-
-                li.addEventListener('click', () => {
-                    document.getElementById('nomeInput').value = user.Nome;
-                    document.getElementById('empresaInput').value = user.Empresa;
-                    bootstrap.Modal.getInstance(document.getElementById('searchModal')).hide();
-                });
-
-                resultList.appendChild(li);
-            });
-        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
