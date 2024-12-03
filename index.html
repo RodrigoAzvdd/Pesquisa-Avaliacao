@@ -511,12 +511,6 @@
         document.getElementById('submitBtn').addEventListener('click', async function (event) {
             event.preventDefault();
 
-            // Validate user info
-            if (!document.getElementById('nomeInput').value) {
-                alert('Por favor, selecione um usuário');
-                return;
-            }
-
             const avaliacoesNomes = [
                 'qualidade', 'disponibilidade', 'cordialidade',
                 'agilidade', 'prazos', 'priorizarDemandas',
@@ -524,7 +518,6 @@
                 'nps'
             ];
 
-            // Check each field
             for (const field of avaliacoesNomes) {
                 if (!document.querySelector(`input[name="${field}"]:checked`)) {
                     alert('Por favor, responda todas as perguntas');
@@ -532,8 +525,6 @@
                 }
             }
 
-            // Capture form data
-            const usuario = document.getElementById('nomeInput').value;
             const empresa = document.getElementById('empresas').value;
             const setor = document.querySelector('input[name="setor"]:checked').value;
 
@@ -556,7 +547,6 @@
                 return avaliacoes;
             }
 
-            // Show modal
             const modalSubmit = new bootstrap.Modal(document.getElementById('submitModal'));
             modalSubmit.show();
 
@@ -566,7 +556,6 @@
                 avaliacoes: capturarAvaliacoes()
             };
 
-            // Reset form
             document.getElementById('satisfactionForm').reset();
 
             try {
@@ -580,7 +569,6 @@
 
                 if (response.ok) {
                     document.getElementById('sendInfo').innerHTML = 'Avaliação Enviada!'
-
 
                     document.getElementById('nomeInput').value = usuario;
                     document.getElementById('empresaInput').value = empresa;
