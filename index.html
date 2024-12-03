@@ -63,6 +63,9 @@
 
         .sectionDiv {
             margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .question-group {
@@ -71,6 +74,8 @@
             flex-direction: column;
             justify-content: center;
         }
+
+
 
         .nomeSetor {
             font-weight: 600;
@@ -145,6 +150,19 @@
             gap: 3rem;
             margin-bottom: 2rem;
         }
+
+        .options {
+            text-align: center;
+        }
+
+        th {
+            font-size: .78rem;
+        }
+
+        .pergunta {
+            width: 51rem;
+            font-size: .95rem;
+        }
     </style>
 </head>
 
@@ -165,9 +183,11 @@
             unidades de negócios do Grupo Telles. Acreditamos que a melhoria contínua de nossas operações depende do
             feedback de nossos clientes internos. Por isso, sua participação é fundamental para identificar os pontos
             fortes de nossa atuação e áreas que precisam de aprimoramento, assegurando que nossas soluções atendam de
-            forma cada vez mais eficiente às necessidades das unidades de negócios. A pesquisa é <strong>anônima</strong>, e todas as
+            forma cada vez mais eficiente às necessidades das unidades de negócios. A pesquisa é
+            <strong>anônima</strong>, e todas as
             respostas serão tratadas com total confidencialidade.
-            Agradecemos desde já sua participação!</p>
+            Agradecemos desde já sua participação!
+        </p>
 
         <form id="satisfactionForm">
             <div class="informacao-usuario">
@@ -272,50 +292,118 @@
 
                 <!-- Satisfação Geral -->
                 <div class="sectionDiv">
+
                     <h3>Satisfação Geral:</h3>
-                    <div class="mb-3">
-                        <p>1. Como você avalia a <b>qualidade do atendimento</b> do setor de <span
-                                class="nomeSetor">RH</span>?
-                        </p>
-                        <div class="radios-inline">
-                            <label><input type="radio" name="qualidade" value="1"> 1 - Péssimo</label>
-                            <label><input type="radio" name="qualidade" value="2"> 2 - Ruim</label>
-                            <label><input type="radio" name="qualidade" value="3"> 3 - Regular</label>
-                            <label><input type="radio" name="qualidade" value="4"> 4 - Bom</label>
-                            <label><input type="radio" name="qualidade" value="5"> 5 - Excelente</label>
-                        </div>
-                    </div>
 
-                    <div class="mb-3">
-                        <p>2. Como você avalia a <b>disponibilidade</b> do setor de <span class="nomeSetor">RH</span>?
-                        </p>
-                        <div class="radios-inline">
-                            <label><input type="radio" name="disponibilidade" value="1"> 1 - Péssimo</label>
-                            <label><input type="radio" name="disponibilidade" value="2"> 2 - Ruim</label>
-                            <label><input type="radio" name="disponibilidade" value="3"> 3 - Regular</label>
-                            <label><input type="radio" name="disponibilidade" value="4"> 4 - Bom</label>
-                            <label><input type="radio" name="disponibilidade" value="5"> 5 - Excelente</label>
-                        </div>
-                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Pergunta</th>
+                                <th>1 - Péssimo</th>
+                                <th>2 - Ruim</th>
+                                <th>3 - Regular</th>
+                                <th>4 - Bom</th>
+                                <th>5 - Excelente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Satisfação Geral -->
+                            <tr>
+                                <td class="pergunta">1. Como você avalia a <strong>qualidade</strong> do atendimento do
+                                    setor de
+                                    <span class="nomeSetor">RH</span>?
+                                </td>
+                                <td class="options"><input type="radio" name="qualidade" value="1"></td>
+                                <td class="options"><input type="radio" name="qualidade" value="2"></td>
+                                <td class="options"><input type="radio" name="qualidade" value="3"></td>
+                                <td class="options"><input type="radio" name="qualidade" value="4"></td>
+                                <td class="options"><input type="radio" name="qualidade" value="5"></td>
+                            </tr>
 
-                    <div class="mb-3">
-                        <p>3. Como você avalia a <b>cordialidade e respeito</b> do setor de <span
-                                class="nomeSetor">RH</span>?
-                        </p>
-                        <div class="radios-inline">
-                            <label><input type="radio" name="cordialidade" value="1"> 1 - Péssimo</label>
-                            <label><input type="radio" name="cordialidade" value="2"> 2 - Ruim</label>
-                            <label><input type="radio" name="cordialidade" value="3"> 3 - Regular</label>
-                            <label><input type="radio" name="cordialidade" value="4"> 4 - Bom</label>
-                            <label><input type="radio" name="cordialidade" value="5"> 5 - Excelente</label>
-                        </div>
-                    </div>
+
+                            <tr>
+                                <td class="pergunta">2. Como você avalia a <b>disponibilidade</b> do setor de <span
+                                        class="nomeSetor">RH</span>?</td>
+                                <td class="options"><input type="radio" name="disponibilidade" value="1"></td>
+                                <td class="options"><input type="radio" name="disponibilidade" value="2"></td>
+                                <td class="options"><input type="radio" name="disponibilidade" value="3"></td>
+                                <td class="options"><input type="radio" name="disponibilidade" value="4"></td>
+                                <td class="options"><input type="radio" name="disponibilidade" value="5"></td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="pergunta">3. Como você avalia a <b>cordialidade e respeito</b> do setor de
+                                    <span class="nomeSetor">RH</span>?</td>
+                                <td class="options"><input type="radio" name="cordialidade" value="1"></td>
+                                <td class="options"><input type="radio" name="cordialidade" value="2"></td>
+                                <td class="options"><input type="radio" name="cordialidade" value="3"></td>
+                                <td class="options"><input type="radio" name="cordialidade" value="4"></td>
+                                <td class="options"><input type="radio" name="cordialidade" value="5"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <hr>
 
                 <div class="sectionDiv">
+
+
                     <h3>Agilidade na Entrega de Demandas:</h3>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Pergunta</th>
+                                <th>1 - Péssimo</th>
+                                <th>2 - Ruim</th>
+                                <th>3 - Regular</th>
+                                <th>4 - Bom</th>
+                                <th>5 - Excelente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Satisfação Geral -->
+                            <tr>
+                                <td class="pergunta">1. Os <strong>prazos</strong> estipulados pelo setor de <span
+                                        class="nomeSetor">RH</span>
+                                    são
+                                    cumpridos de maneira eficaz?
+                                </td>
+                                <td class="options"><input type="radio" name="prazos" value="1"></td>
+                                <td class="options"><input type="radio" name="prazos" value="2"></td>
+                                <td class="options"><input type="radio" name="prazos" value="3"></td>
+                                <td class="options"><input type="radio" name="prazos" value="4"></td>
+                                <td class="options"><input type="radio" name="prazos" value="5"></td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="pergunta">2. O setor de <span class="nomeSetor">RH</span> consegue
+                                    <strong>priorizar
+                                        demandas
+                                        urgentes</strong>
+                                    quando necessário?</td>
+                                <td class="options"><input type="radio" name="priorizarDemandas" value="1"></td>
+                                <td class="options"><input type="radio" name="priorizarDemandas" value="2"></td>
+                                <td class="options"><input type="radio" name="priorizarDemandas" value="3"></td>
+                                <td class="options"><input type="radio" name="priorizarDemandas" value="4"></td>
+                                <td class="options"><input type="radio" name="priorizarDemandas" value="5"></td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="pergunta">3. Como você avalia a <b>cordialidade e respeito</b> do setor de
+                                    <span class="nomeSetor">RH</span>?</td>
+                                <td class="options"><input type="radio" name="cordialidade" value="1"></td>
+                                <td class="options"><input type="radio" name="cordialidade" value="2"></td>
+                                <td class="options"><input type="radio" name="cordialidade" value="3"></td>
+                                <td class="options"><input type="radio" name="cordialidade" value="4"></td>
+                                <td class="options"><input type="radio" name="cordialidade" value="5"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <!-- <div class="mb-3">
                         <p>1. O setor de <span class="nomeSetor">RH</span> responde rapidamente às suas solicitações?
                         </p>
@@ -327,78 +415,55 @@
                             <label><input type="radio" name="agilidade" value="5"> 5 - Excelente</label>
                         </div>
                     </div> -->
-
-                    <div class="mb-3">
-                        <p>1. Os <strong>prazos</strong> estipulados pelo setor de <span class="nomeSetor">RH</span> são
-                            cumpridos de maneira eficaz?</p>
-                        <div class="radios-inline">
-                            <label><input type="radio" name="prazos" value="1"> 1 - Péssimo</label>
-                            <label><input type="radio" name="prazos" value="2"> 2 - Ruim</label>
-                            <label><input type="radio" name="prazos" value="3"> 3 - Regular</label>
-                            <label><input type="radio" name="prazos" value="4"> 4 - Bom</label>
-                            <label><input type="radio" name="prazos" value="5"> 5 - Excelente</label>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <p>2. O setor de <span class="nomeSetor">RH</span> consegue <strong>priorizar
-                                demandas
-                                urgentes</strong>
-                            quando necessário?
-                        </p>
-                        <div class="radios-inline">
-                            <label><input type="radio" name="priorizarDemandas" value="1"> 1 - Péssimo</label>
-                            <label><input type="radio" name="priorizarDemandas" value="2"> 2 - Ruim</label>
-                            <label><input type="radio" name="priorizarDemandas" value="3"> 3 - Regular</label>
-                            <label><input type="radio" name="priorizarDemandas" value="4"> 4 - Bom</label>
-                            <label><input type="radio" name="priorizarDemandas" value="5"> 5 - Excelente</label>
-                        </div>
-                    </div>
                 </div>
 
                 <hr>
 
                 <div class="sectionDiv">
                     <h3>Comunicação e Relacionamento:</h3>
-                    <div class="mb-3">
-                        <p>1. O setor de <span class="nomeSetor">RH</span> possui uma <strong>comunicação clara</strong>
-                            durante
-                            o processo de entrega das demandas?
-                        </p>
-                        <div class="radios-inline">
-                            <label><input type="radio" name="comunicacaoClara" value="1"> 1 - Péssimo</label>
-                            <label><input type="radio" name="comunicacaoClara" value="2"> 2 - Ruim</label>
-                            <label><input type="radio" name="comunicacaoClara" value="3"> 3 - Regular</label>
-                            <label><input type="radio" name="comunicacaoClara" value="4"> 4 - Bom</label>
-                            <label><input type="radio" name="comunicacaoClara" value="5"> 5 - Excelente</label>
-                        </div>
-                    </div>
 
-                    <!-- <div class="mb-3">
-                        <p>2. Você recebe <strong>atualizações regulares</strong> sobre o status das demandas
-                            solicitadas ao
-                            setor de <span class="nomeSetor">RH</span>?</p>
-                        <div class="radios-inline">
-                            <label><input type="radio" name="atualizacoesRegulares" value="1"> 1 - Péssimo</label>
-                            <label><input type="radio" name="atualizacoesRegulares" value="2"> 2 - Ruim</label>
-                            <label><input type="radio" name="atualizacoesRegulares" value="3"> 3 - Regular</label>
-                            <label><input type="radio" name="atualizacoesRegulares" value="4"> 4 - Bom</label>
-                            <label><input type="radio" name="atualizacoesRegulares" value="5"> 5 - Excelente</label>
-                        </div>
-                    </div> -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Pergunta</th>
+                                <th>1 - Péssimo</th>
+                                <th>2 - Ruim</th>
+                                <th>3 - Regular</th>
+                                <th>4 - Bom</th>
+                                <th>5 - Excelente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Satisfação Geral -->
+                            <tr>
+                                <td class="pergunta">1. O setor de <span class="nomeSetor">RH</span> possui uma
+                                    <strong>comunicação
+                                        clara</strong>
+                                    durante
+                                    o processo de entrega das demandas?
+                                </td>
+                                <td class="options"><input type="radio" name="comunicacaoClara" value="1"></td>
+                                <td class="options"><input type="radio" name="comunicacaoClara" value="2"></td>
+                                <td class="options"><input type="radio" name="comunicacaoClara" value="3"></td>
+                                <td class="options"><input type="radio" name="comunicacaoClara" value="4"></td>
+                                <td class="options"><input type="radio" name="comunicacaoClara" value="5"></td>
+                            </tr>
 
-                    <div class="mb-3">
-                        <p>2. Como você avalia a proatividade do setor de <span class="nomeSetor">RH</span> ao comunicar
-                            <strong>mudanças ou imprevistos</strong> nas demandas solicitadas?
-                        </p>
-                        <div class="radios-inline">
-                            <label><input type="radio" name="mudancasImprevistos" value="1"> 1 - Péssimo</label>
-                            <label><input type="radio" name="mudancasImprevistos" value="2"> 2 - Ruim</label>
-                            <label><input type="radio" name="mudancasImprevistos" value="3"> 3 - Regular</label>
-                            <label><input type="radio" name="mudancasImprevistos" value="4"> 4 - Bom</label>
-                            <label><input type="radio" name="mudancasImprevistos" value="5"> 5 - Excelente</label>
-                        </div>
-                    </div>
+
+                            <tr>
+                                <td class="pergunta">2. Como você avalia a proatividade do setor de <span
+                                        class="nomeSetor">RH</span> ao
+                                    comunicar
+                                    <strong>mudanças ou imprevistos</strong> nas demandas solicitadas?
+                                </td>
+                                <td class="options"><input type="radio" name="mudancasImprevistos" value="1"></td>
+                                <td class="options"><input type="radio" name="mudancasImprevistos" value="2"></td>
+                                <td class="options"><input type="radio" name="mudancasImprevistos" value="3"></td>
+                                <td class="options"><input type="radio" name="mudancasImprevistos" value="4"></td>
+                                <td class="options"><input type="radio" name="mudancasImprevistos" value="5"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
