@@ -509,6 +509,7 @@
             for (const field of avaliacoesNomes) {
                 if (!document.querySelector(`input[name="${field}"]:checked`)) {
                     alert('Por favor, responda todas as perguntas');
+                    console.log(field)
                     return;
                 }
             }
