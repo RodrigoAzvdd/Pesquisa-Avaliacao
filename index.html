@@ -574,7 +574,7 @@
             <div class="d-flex flex-column">
                 <strong>${user.Nome}</strong>
                 
-                <small class="text-muted">${user.Empresa}</small>
+                <small class="text-muted">${user.Empresa == null ? 'Empresa não cadastrada' : user.Empresa}</small>
             </div>
         `;
 
