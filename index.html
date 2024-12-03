@@ -559,8 +559,7 @@
                 if (response.ok) {
                     document.getElementById('sendInfo').innerHTML = 'Avaliação Enviada!'
 
-                    document.getElementById('nomeInput').value = usuario;
-                    document.getElementById('empresaInput').value = empresa;
+                    document.getElementById('empresas').value = empresa;
                     document.querySelector('input[name="setor"]').checked = true;
                     document.querySelectorAll('.nomeSetor').forEach(element => {
                         element.innerHTML = 'RH'
